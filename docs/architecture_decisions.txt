@@ -16,6 +16,6 @@ and send REST requests to backend.
 
 4. Location producer -  This service will ingest locations data from clients and use gRPC to send location data to Kafka service. 
 
-5. Location consumer - This service will persist locations data into the database and consume location data from Kafka service.
+5. Location consumer - This service will persist locations data into the database and use gRPC to consume location data from Kafka service.
 
-6. Kafka service - This is a queue to hold Location Data.
+6. Kafka service - This is a queue to hold Location Data. It will scale well along with large volume of location data.
