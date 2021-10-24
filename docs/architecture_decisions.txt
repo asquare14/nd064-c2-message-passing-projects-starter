@@ -1,0 +1,21 @@
+In the new architecture of the application, it is recommeded to break down the monolith into microservices. Microservices are independent services that communicate with one another 
+and are deployed separately. Microservices are more scalable and enable parallel development as multiple developers can easily work simultaneously on 
+different parts of the application.
+
+Here is the breakdown of the services :
+
+1. Front-end service - There is a need to use various front-end technologies used for the same application. Consider an application like Twitter,
+it has a front-end client for the web and a different client for Android and again a different client for ios. We might want to extend
+Udaconnect to a mobile app later on and need a different front-end. Having a front-end service would enable extensibility of code,
+and also allow different front-end teams to work independently.  Front-end service will accept REST GET requests from external clients
+and send REST requests to backend.
+
+2. People service - This service creates people data and gets people data from the database. People service will accept REST requests.
+
+3. Connection service - This service combines people and location data to build connections. Connection service will accept REST requests.
+
+4. Location producer -  This service will ingest locations data from clients and use gRPC to send location data to Kafka service. 
+
+5. Location consumer - This service will persist locations data into the database and consume location data from Kafka service.
+
+6. Kafka service - This is a queue to hold Location Data.
