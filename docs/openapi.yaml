@@ -1,0 +1,106 @@
+openapi: 3.0.0
+servers:
+  - url: http://localhost:30001
+    description: ''
+    variables: {}
+info:
+  version: f831d54b-4d6d-473b-a4a3-3cf43785e775
+  title: udacity-message-passing
+  description: ''
+  termsOfService: ''
+  contact: {}
+  license:
+    name: ''
+paths:
+  /{30001}/api/persons:
+    get:
+      summary: get persons
+      operationId: getpersons
+      parameters:
+        - $ref: '#/components/parameters/30001'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    post:
+      summary: post person
+      operationId: postperson
+      parameters:
+        - name: '30001'
+          in: path
+          required: true
+          style: simple
+          schema:
+            type: number
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+              example:
+                last_name: Agrawal
+                company_name: Twitter
+                id: 1997
+                first_name: Atibhi
+            example: |-
+              {
+                  "last_name": "Agrawal",
+                  "company_name": "Twitter",
+                  "id": 1997,
+                  "first_name": "Atibhi"
+              }
+  /api/persons/6/connection:
+    get:
+      summary: get connection
+      operationId: getconnection
+      parameters:
+        - $ref: '#/components/parameters/distance'
+        - $ref: '#/components/parameters/end_date'
+        - $ref: '#/components/parameters/start_date'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+components:
+  parameters:
+    '30001':
+      name: '30001'
+      in: path
+      required: true
+      style: simple
+      schema:
+        type: number
+    distance:
+      name: distance
+      in: query
+      required: true
+      style: form
+      schema:
+        type: number
+    end_date:
+      name: end_date
+      in: query
+      required: true
+      style: form
+      schema:
+        type: string
+        example: '2020-12-30'
+    start_date:
+      name: start_date
+      in: query
+      required: true
+      style: form
+      schema:
+        type: string
+        example: '2020-01-01'
+security: []
+tags: []
+externalDocs:
+  url: ''
+  description: ''
+warnings: []
